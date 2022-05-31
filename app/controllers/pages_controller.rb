@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def dashboard
+    @projects = current_user.owned_projects + current_user.projects
+  end
 end
