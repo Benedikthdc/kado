@@ -1,4 +1,66 @@
-<h1>dashboard</h1>
+<%= render 'pages/partials/modal' %>
 
-<h3>my projects</h3>
-<%= @projects %>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+      <%= render 'shared/dashboardnav' %>
+      <div class="col py-3">
+      <h1 style="color: black">Dashboard</h1>
+        <div class="dashboard-card-container">
+
+          <div class="dashboard-upperpart-container d-flex mb-3">
+            <div class="dashboard-card dashboard-upperpart-card-calender">
+              calender
+            </div>
+            <div class="dashboard-card dashboard-upperpart-card-activity">
+              activity
+            </div>
+          </div>
+
+          <div class="dashboard-bottompart-container">
+            <div class="dashboard-card dashboard-bottompart-card-projects">
+              <div class="dashboard-projects-container">
+                <div class="dashboard-projects-upperpart d-flex justify-content-between">
+                  <div class="my-projects-label">
+                    <p>my project</p>
+                  </div>
+                  <div class="project-links">
+                    <%= link_to "join project" %>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      create project
+                    </button>
+                  </div>
+                </div>
+
+                <div class="dashboard-projects-bottompart">
+                  <table class="table">
+                    <thead>
+                      <tr class="table-light">
+                        <th scope="col">Group</th>
+                        <th scope="col">Admin</th>
+                        <th scope="col">Deadlines</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody style="border: none">
+                    <% @projects.each do |project|  %>
+                      <tr>
+                        <th scope="row"><%= link_to project.name, project_path(project) %></th>
+                        <td><%= project.user_id %></td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                      </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+</div>
