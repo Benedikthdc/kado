@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+      <%= render 'shared/dashboardnav' %>
+      <div class="col py-3">
+        <h1 style="color: black">@<%= @project.name %></h1>
+        <div class="project-card-container">
+          <div class="project-upperpart-cards-container d-flex">
+            <div class="dashboard-card project-upperpart-card-chat"></div>
+            <div class="dashboard-card project-upperpart-card-ideas"></div>
+          </div>
+
+          <div class="project-bottompart-card-container d-flex mt-3">
+            <div class="project-bottompart-left-cards">
+              <div class="dashboard-card project-bottompart-card-payment"></div>
+              <div class="dashboard-card project-bottompart-card-times mt-3"></div>
+            </div>
+
+            <div class="project-bottompart-right-cards ">
+              <div class="dashboard-card project-bottompart-card-group"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

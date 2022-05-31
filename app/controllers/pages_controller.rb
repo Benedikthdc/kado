@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @project = Project.new
     @projects = current_user.owned_projects + current_user.projects
   end
 end
