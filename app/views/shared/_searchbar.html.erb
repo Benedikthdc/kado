@@ -1,0 +1,7 @@
+<%= form_tag projects_path, class: "searchbar", method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "search-bar form-control",
+    placeholder: "search"
+  %>
+<% end %>
