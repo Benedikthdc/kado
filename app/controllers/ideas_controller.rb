@@ -1,5 +1,7 @@
 class IdeasController < ApplicationController
   def index
+    @project = Project.find(params[:project_id])
+    @ideas = @project.ideas
   end
 
   def new
