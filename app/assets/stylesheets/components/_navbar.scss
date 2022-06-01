@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: #5856D6
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +8,61 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  margin-top: 12px;
+  margin-left: 12px;
+  width: 130px;
+}
+
+// .navbar {
+//   border-bottom: 1px solid;
+// }
+
+.nav-item {
+  width: max-content;
+}
+
+.container-info {
+  display: flex;
+  justify-content: space-between;
+  width: 92vw;
+  align-items: center;
+}
+
+.container-info p {
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid {
+  display: flex;
+  width: 100vw;
+}
+
+.avatar:hover {
+  cursor: pointer;
+}
+
+.navbar-brand img{
+  width: 30px;
+}
+
+.nav-link-btn-btn-primary {
+  color: #8146FF;
+  background-color: #FFD60A;
+  padding: 10px 40px;
+  text-decoration: none;
+  border-radius: 20px;
+}
+
+.nav-item.active .nav-link {
+  color: #ffffff;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+  margin-right: 50px;
+}
+
+.me-auto.navbar-nav {
+  align-items: center;
 }

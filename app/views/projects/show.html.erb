@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+      <%= render 'shared/dashboardnav' %>
+      <div class="col py-3">
+        <h1 style="color: black">@<%= @project.name %></h1>
+        <div class="project-card-container">
+          <div class="project-upperpart-cards-container d-flex">
+            <div class="dashboard-card project-upperpart-card-chat"></div>
+            <div class="dashboard-card project-upperpart-card-ideas">
+              <table class="table">
+                <thead>
+                  <tr class="table-light">
+                    <th scope="col">idea</th>
+                    <th scope="col">price</th>
+                  </tr>
+                </thead>
+              <tbody style="border: none">
+              <% @project.ideas.each do |idea| %>
+                <tr>
+                  <th scope="row"><%= idea.title %></th>
+                  <td><%= idea.price %></td>
+                </tr>
+              <% end %>
+                  </tbody>
+                  </table>
+            <%= link_to "add idea", new_project_idea_path(@project) %>
+            </div>
+          </div>
+
+
+          <div class="project-bottompart-card-container d-flex mt-3">
+            <div class="project-bottompart-left-cards">
+              <div class="dashboard-card project-bottompart-card-payment"></div>
+              <div class="dashboard-card project-bottompart-card-times mt-3"></div>
+            </div>
+
+            <div class="project-bottompart-right-cards ">
+              <div class="dashboard-card project-bottompart-card-group">
+              <h3>Group participants</h3>
+              <p>add participants to group</p>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
