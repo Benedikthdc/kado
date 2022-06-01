@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
 
   resources :projects do
+    resources :ideas
     resources :user_projects
   end
 end

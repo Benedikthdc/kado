@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
+    @user_id = current_user.id
   end
 
   def create
