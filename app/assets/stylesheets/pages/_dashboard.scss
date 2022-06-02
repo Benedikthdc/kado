@@ -12,7 +12,7 @@
 
 .dashboard-bottompart-card-projects{
   width: 1110px;
-  height: 440px;
+  height: 366px;
 }
 
 .dashboard-card-container{
@@ -22,13 +22,86 @@
 
 // bottom
 
-.my-projects-label{
-}
+// .my-projects-label{
+// }
 
 .dashboard-projects-container{
-  padding: 30px
+  padding: 15px 30px 30px 30px;
+
 }
 
-tr{
-  padding:50px
+.table > :not(caption) > * > * {
+  padding: 20px;
+  border-width: 0px;
+  color: #5F6868;
+}
+
+a {
+  color: lightgray;
+  text-decoration: none;
+}
+
+.project-links a{
+  padding-bottom: 20px;
+  margin-right: 20px;
+  color: #8146FF;
+}
+.project-links {
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  color: white;
+  background-color: #8146FF;
+  border-color: #8146FF;
+  border-radius: 7px;
+}
+
+.my-projects-label p{
+  margin-top: 4px;
+}
+
+.table-light__cell-radius-left {
+  border-radius: 10px 0px 0px 10px;
+}
+
+.table-light__cell-radius-right {
+  border-radius: 0px 10px 10px 0px;
+}
+
+.dashboard__table-body{
+  border-bottom: 1px solid rgb(228, 228, 228);
+}
+
+.custom-badge {
+  background-color: #F5FBF5;
+  color: #56C456;
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+
+.avatar-admin-img {
+  width: 40px;
+  margin: -10px 5px;
+  border-radius: 50%;
+}
+
+.group a{
+  font-weight: 300;
+  color: rgb(125, 125, 125);
+  font-size: large;
+}
+
+.dashboard__title-logo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-dashboard {
+  margin-left: 20px;
+  color: black;
+}
+
+.margin-right {
+  margin-right: -30px;
 }
