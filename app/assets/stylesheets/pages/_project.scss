@@ -22,3 +22,52 @@
   height: 377px;
   margin-top: 20px
 }
+
+
+
+
+//   align-items: flex-end;
+//   justify-content: space-between;
+
+
+
+// flex-grow: 1;
+// margin-right: 15px;
+
+.email-bar-button {
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.email-bar-button .user_email {
+  flex-grow:1;
+  margin-right: 15px;
+  margin-bottom: 0 !important;
+}
+
+.dashboard-card{
+  padding:25px
+}
+
+.email .form-control{
+  border-radius: 14px
+}
+
+.btn-primary {
+  border-radius: 14px;
+}
+
+.copy-link {
+  margin-top: 50px;
+}
+
+.link-at-bottum {
+  text-decoration: underline;
+  color: rgb(101, 101, 255);
+
+}
+
+
+.form-label.email{
+  display: none
+}
