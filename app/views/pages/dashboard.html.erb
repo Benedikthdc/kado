@@ -4,7 +4,23 @@
     <div class="row flex-nowrap">
       <%= render 'shared/dashboardnav' %>
       <div class="col py-3">
-      <h1 style="color: black">Dashboard</h1>
+        <div class="dashboard__title-logo">
+          <h1 class="title-dashboard">Dashboard</h1>
+          <div class="dropdown pb-4">
+              <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="https://github.com/mdo.png" alt="hugenerd" width="60" class="rounded-circle margin-right">
+                  <%# <span class="d-none d-sm-inline mx-1">loser</span> %>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                  <%# <li><a class="dropdown-item" href="#">Settings</a></li> %>
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <%# <li>
+                      <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Sign out</a></li> %>
+              </ul>
+          </div>
+        </div>
         <div class="dashboard-card-container">
 
           <div class="dashboard-upperpart-container d-flex mb-3">
@@ -21,7 +37,7 @@
               <div class="dashboard-projects-container">
                 <div class="dashboard-projects-upperpart d-flex justify-content-between">
                   <div class="my-projects-label">
-                    <p>my project</p>
+                    <p>My projects</p>
                   </div>
                   <div class="project-links">
                     <%= link_to "join project" %>
@@ -35,21 +51,21 @@
                   <table class="table">
                     <thead>
                       <tr class="table-light">
-                        <th scope="col">Group</th>
-                        <th scope="col">Admin</th>
-                        <th scope="col">Deadlines</th>
-                        <th scope="col">Action</th>
-                        <th scope="col">Status</th>
+                        <th scope="col" class="table-light__cell-radius-left fw-light">Group</th>
+                        <th scope="col" class="fw-light">Admin</th>
+                        <th scope="col" class="fw-light">Deadlines</th>
+                        <th scope="col" class="table-light__cell-radius-right fw-light">Status</th>
                       </tr>
                     </thead>
                     <tbody style="border: none">
                     <% @projects.each do |project|  %>
-                      <tr>
-                        <th scope="row"><%= link_to project.name, project_path(project) %></th>
-                        <td><%= project.user_id %></td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
+                      <tr class="dashboard__table-body fw-light">
+                        <th class="group" scope="row"><%= link_to project.name, project_path(project) %></th>
+                        <td><%= image_tag "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80", class:"avatar-admin-img" %><%= project.user.email %></td>
+                        <td><%= project.date %></td>
+                        <td class="status-container">
+                          <span class="badge custom-badge">Active</span>
+                        </td>
                       </tr>
                       <% end %>
                     </tbody>
