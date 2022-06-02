@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+      <%= render 'shared/dashboardnav' %>
+      <div class="col py-3">
+        <div class="idea-card-container d-flex">
+          <% @ideas.each do |idea| %>
+            <div class="dashboard-card idea-card">
+            <%= image_tag "https://img.freepik.com/free-vector/birthday-party-christmas-gift-box-isolated-vector-illustration-cartoon-square-giftbox-with-blue_98734-261.jpg",class:"idea-img" %>
+              <div class="bottom-idea-card">
+                <p><%= idea.title %></p>
+                <p><%= idea.price %></p>
+                <div class="avatar-idea-card">
+                  <%= image_tag "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80", class:"idea-card-avatar-img" %>
+                </div>
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>
