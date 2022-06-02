@@ -5,3 +5,15 @@
 .bar-info{
   color: black
 }
+
+.calendar-heading{
+  display:flex;
+  justify-content: space-between;
+  padding-right: 7px;
+  padding-left: 7px;
+}
+
+.calendar-heading a {
+  text-decoration: none;
+}
+

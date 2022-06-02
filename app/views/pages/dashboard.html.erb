@@ -8,8 +8,10 @@
         <div class="dashboard-card-container">
 
           <div class="dashboard-upperpart-container d-flex mb-3">
-            <div class="dashboard-card dashboard-upperpart-card-calender">
-              calender
+            <div class="dashboard-card dashboard-upperpart-card-calender" style="overflow: hidden">
+              <%= calendar(start_date_param: :my_date, number_of_days: 21) do |date| %>
+                <%= date.day %>
+              <% end %>
             </div>
             <div class="dashboard-card dashboard-upperpart-card-activity">
               activity
