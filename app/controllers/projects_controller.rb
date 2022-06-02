@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @user_id = current_user.id
+    @ideas = @project.ideas.sort_by(&:total_votes).reverse.first(3)
   end
 
   def create

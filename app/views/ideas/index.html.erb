@@ -7,11 +7,16 @@
             <div class="dashboard-card idea-card">
             <%= image_tag "https://img.freepik.com/free-vector/birthday-party-christmas-gift-box-isolated-vector-illustration-cartoon-square-giftbox-with-blue_98734-261.jpg",class:"idea-img" %>
               <div class="bottom-idea-card">
-                <p><%= idea.title %></p>
-                <p><%= idea.price %></p>
-                <div class="avatar-idea-card">
                   <%= image_tag "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80", class:"idea-card-avatar-img" %>
-                </div>
+                  <% if current_user.votes.where(idea_id: idea.id).blank? %>
+                      <div class="votes-part d-flex justify-content-around">
+                        <%= link_to "yes", idea_votes_path(idea, value: :positive), method: :post, class: "voting-btn btn btn-primary" %>
+                        <%= link_to "no", idea_votes_path(idea, value: :negative), method: :post, class: "voting-btn btn btn-primary" %>
+                      </div>
+                  <% else %>
+                    <p>you voted!</p>
+                    <p><%= idea.total_votes %></p>
+                  <% end %>
               </div>
 
             </div>

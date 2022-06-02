@@ -16,13 +16,15 @@
                   <tr class="table-light">
                     <th scope="col">idea</th>
                     <th scope="col">price</th>
+                    <th scope="col">votes</th>
                   </tr>
                 </thead>
               <tbody style="border: none">
-              <% @project.ideas.each do |idea| %>
+              <% @ideas.each do |idea| %>
                 <tr>
                   <th scope="row"><%= idea.title %></th>
                   <td><%= idea.price %></td>
+                  <td><%= idea.total_votes %></td>
                 </tr>
               <% end %>
                   </tbody>
@@ -41,7 +43,7 @@
             <div class="project-bottompart-right-cards ">
               <div class="dashboard-card project-bottompart-card-group">
               <h3>Group participants</h3>
-              <p>add participants to group</p>
+              <p>add users to group</p>
                 <%= simple_form_for(User.new, as: :user, url: invitation_path(:user), html: { method: :post }) do |f| %>
                 <%= f.error_notification %>
 
@@ -57,6 +59,9 @@
                   <%= f.button :submit, t("devise.invitations.new.submit_button"), class: "btn btn-primary" %>
                 </div>
               <% end %>
+              <p>or</p>
+              <p>copy link to add user</p>
+              <a href="">s=chrome..69i57j0i512l9.1362j0j15&sourceid=chrome&</a>
               </div>
             </div>
           </div>

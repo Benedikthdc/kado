@@ -1,5 +1,7 @@
 .logo-img-indigo{
-  width: 150px
+  width: 150px;
+  margin-top: -20px;
+  margin-left: -10px;
 }
 
 .bar-info{
@@ -17,3 +19,29 @@
   text-decoration: none;
 }
 
+.searchbar {
+  margin-left: -10px;
+}
+
+.nav-link__m2 {
+ margin-left: -2px !important;
+}
+
+.dashboard {
+  margin-top: 5px;
+  color: black;
+}
+
+.btn-flat {
+  color: white;
+  padding: 8px 60px;
+  border-radius: 4px;
+  background: #c97cff;
+  transition: background 0.3s ease;
+  margin-top: 364px;
+}
+
+.btn-flat:hover {
+  background: #8410ff;
+  color: rgb(255, 255, 255);
+}

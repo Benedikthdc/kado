@@ -21,6 +21,12 @@ class IdeasController < ApplicationController
     end
   end
 
+  def upvote
+    @project = Project.find(params[:project_id])
+    @project.idea.votes.create
+  end
+
+
   private
 
   def idea_params
