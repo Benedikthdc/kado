@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :projects, through: :user_projects
   has_many :ideas, dependent: :destroy
   has_many :votes, dependent: :destroy
+  has_many :messages, dependent: :destroy
 end

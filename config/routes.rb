@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
 
   resources :projects do
+    resources :messages, only: :create
     resources :ideas
     resources :user_projects
   end
