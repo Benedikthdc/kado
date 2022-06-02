@@ -10,3 +10,9 @@ avatars = ["https://images.unsplash.com/photo-1633332755192-727a05c4013d?crop=en
   user = User.new(avatar: avatars.sample, name: Faker::Name.name, email: Faker::Internet.email, password: "123456")
   user.save
 end
+
+project = Project.new(name: "test", date: Date.today, user_id: User.first)
+project.save
+
+project.users << User.second
+project.users << User.third
