@@ -8,15 +8,16 @@
             <div class="dashboard-card project-upperpart-card-chat"></div>
             <div class="dashboard-card project-upperpart-card-ideas">
               <div class="ideas-header d-flex justify-content-between">
-                <h2>ideas</h2>
+                <h2>Ideas</h2>
                 <%= link_to "view all", project_ideas_path(@project) %>
               </div>
               <table class="table">
                 <thead>
                   <tr class="table-light">
-                    <th scope="col">idea</th>
-                    <th scope="col">price</th>
-                    <th scope="col">votes</th>
+                    <th scope="col">Ranking</th>
+                    <th scope="col">Idea</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Votes</th>
                   </tr>
                 </thead>
               <tbody style="border: none">
@@ -42,8 +43,9 @@
 
             <div class="project-bottompart-right-cards ">
               <div class="dashboard-card project-bottompart-card-group">
-              <h3>Group participants</h3>
-              <p>add users to group</p>
+              <h3 class="box-down-right-title">Group participants</h3>
+              <img src="https://github.com/mdo.png" width="50"       class="rounded-circle margin-right avatar-in-ideas">
+              <p class="box-down-right-h2">Add more participants </p>
                 <%= simple_form_for(User.new, as: :user, url: invitation_path(:user), html: { method: :post }) do |f| %>
                 <%= f.error_notification %>
 
@@ -55,12 +57,12 @@
                   <% end -%>
 
                   <div class="form-actions">
-                    <%= f.button :submit, t("devise.invitations.new.submit_button"), class: "btn btn-primary" %>
+                    <%= f.button :submit, t("devise.invitations.new.submit_button"), class: "send-invite-btn btn btn-primary" %>
                   </div>
                 </div>
               <% end %>
 
-              <p class="copy-link fw-normal">copy link</p>
+              <p class="copy-link fw-light">Copy link</p>
               <a class="link-at-bottum" href="">s=chrome..69i57j0i512l9.1362j0j15&sourceid=chrome&</a>
               </div>
             </div>
