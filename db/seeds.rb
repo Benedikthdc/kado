@@ -15,7 +15,14 @@ admin.save!
 end
 
 project = Project.new(name: "test", date: Date.today, user: User.first)
+
+project.save
+
 project.save!
+
 
 project.users << User.second
 project.users << User.third
+
+
+  # activities = Activities.new(ideas: "Nils suggested an idea for bens birthday", messages:"Mark sent you a message", users:"Kilian Anders invited you to his project")
