@@ -30,7 +30,20 @@
               <% end %>
             </div>
             <div class="dashboard-card dashboard-upperpart-card-activity">
-              activity
+              <ul class="unordered-list">
+              <h2>Activities</h2>
+                <% @activities.each do |activity| %>
+                  <% if activity.class == User %>
+                    <li><%= @projects.first.user.email %> invited <%= activity.email %> to his project</li>
+                  <% elsif activity.class == Message %>
+                    <li><%= activity.content %></li>
+                  <% elsif activity.class == Idea %>
+                    <li><%= activity.name %></li>
+                  <% end %>
+
+
+                <% end %>
+              </ul>
             </div>
           </div>
 
