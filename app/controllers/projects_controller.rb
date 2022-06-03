@@ -10,6 +10,8 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user_id = current_user.id
     @project.save
+
+    redirect_to project_path(@project)
   end
 
   private
