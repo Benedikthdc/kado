@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_084130) do
+ActiveRecord::Schema.define(version: 2022_06_03_102128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 2022_06_02_084130) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_ideas_on_project_id"
     t.index ["user_id"], name: "index_ideas_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "project_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_messages_on_project_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -65,6 +75,8 @@ ActiveRecord::Schema.define(version: 2022_06_02_084130) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
+    t.string "paypal"
+    t.string "iban"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
@@ -84,6 +96,8 @@ ActiveRecord::Schema.define(version: 2022_06_02_084130) do
 
   add_foreign_key "ideas", "projects"
   add_foreign_key "ideas", "users"
+  add_foreign_key "messages", "projects"
+  add_foreign_key "messages", "users"
   add_foreign_key "projects", "users"
   add_foreign_key "user_projects", "projects"
   add_foreign_key "user_projects", "users"

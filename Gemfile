@@ -35,6 +35,7 @@ gem 'font-awesome-sass', '~> 5.6.1'
 gem 'simple_form', github: 'heartcombo/simple_form'
 gem 'faker'
 gem "letter_opener"
+gem "simple_calendar"
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

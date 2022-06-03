@@ -2,10 +2,47 @@
     <div class="row flex-nowrap">
       <%= render 'shared/dashboardnav' %>
       <div class="col py-3">
-        <h1 style="color: black">@<%= @project.name %></h1>
-        <div class="project-card-container">
-          <div class="project-upperpart-cards-container d-flex">
-            <div class="dashboard-card project-upperpart-card-chat"></div>
+        <div class="d-flex justify-content-between">
+          <h1 style="color: black">@<%= @project.name %></h1>
+          <h3><%= @project.date %></h3>
+        </div>
+        <div class="project-card-container d-flex justify-content-around">
+          <div class="project-left-cards-container">
+            <div class="dashboard-card project-upperpart-card-chat overflow-hidden">
+            <h2>chat</h2>
+              <div class="container chatroom overflow-scroll" style= "max-height: 415px" data-controller="chatroom-subscription" data-chatroom-subscription-project-id-value = <%= @project.id  %>>
+                <div class="messages" data-chatroom-subscription-target="messages">
+                  <% @project.messages.each do |message| %>
+                    <%= render "messages/message", message: message %>
+                  <% end %>
+                  </div>
+                  <%= simple_form_for [@project, @message],
+                  remote: true,
+                  html: {class: "d-flex"} do |f|
+                  %>
+                  <%= f.input :content,
+                    label: false,
+                    placeholder: "Message ##{@project.name}",
+                    wrapper_html: {class: "flex-grow-1"}
+                  %>
+                  <%= f.submit "Send", class: "btn btn-primary" %>
+                <% end %>
+            </div>
+            </div>
+            <div class="project-bottompart-left-cards">
+              <div class="dashboard-card project-bottompart-card-payment mt-3">
+              <img src="../../assets/images/payment.png" alt="">
+                  <h2>Payment infos</h2>
+                   <p>paypal:</p>
+                  <%= @project.user.paypal %>
+                  <p>IBAN:</p>
+                  <%= @project.user.iban%>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="project-right-card-container">
             <div class="dashboard-card project-upperpart-card-ideas">
               <div class="ideas-header d-flex justify-content-between">
                 <h2>Ideas</h2>
@@ -32,20 +69,18 @@
                   </table>
             <%= link_to "add idea", new_project_idea_path(@project) %>
             </div>
-          </div>
-
-
-          <div class="project-bottompart-card-container d-flex mt-3">
-            <div class="project-bottompart-left-cards">
-              <div class="dashboard-card project-bottompart-card-payment"></div>
-              <div class="dashboard-card project-bottompart-card-times mt-3"></div>
-            </div>
-
             <div class="project-bottompart-right-cards ">
-              <div class="dashboard-card project-bottompart-card-group">
+
               <h3 class="box-down-right-title">Group participants</h3>
               <img src="https://github.com/mdo.png" width="50"       class="rounded-circle margin-right avatar-in-ideas">
               <p class="box-down-right-h2">Add more participants </p>
+
+              <h3>Group participants</h3>
+                <% @project.users.each do |user| %>
+                <%= image_tag user.avatar, class:"avatar-group-index" %>
+                <% end %>
+              <p>add users to group</p>
+
                 <%= simple_form_for(User.new, as: :user, url: invitation_path(:user), html: { method: :post }) do |f| %>
                 <%= f.error_notification %>
 

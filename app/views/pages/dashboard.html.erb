@@ -1,3 +1,4 @@
+
 <%= render 'pages/partials/modal' %>
 
 <div class="container-fluid">
@@ -24,11 +25,28 @@
         <div class="dashboard-card-container">
 
           <div class="dashboard-upperpart-container d-flex mb-3">
-            <div class="dashboard-card dashboard-upperpart-card-calender">
-             
+            <div class="dashboard-card dashboard-upperpart-card-calender" style="overflow: hidden">
+            <div class="test">
+              <%= calendar(start_date_param: :my_date, number_of_days: 21) do |date| %>
+                <div class="day-number"><%= date.day %></div>
+              <% end %>
+              </div>
             </div>
             <div class="dashboard-card dashboard-upperpart-card-activity">
-              activity
+              <ul class="unordered-list">
+              <h2>Activities</h2>
+                <% @activities.each do |activity| %>
+                  <% if activity.class == User %>
+                    <li><%= @projects.first.user.email %> invited <%= activity.email %> to his project</li>
+                  <% elsif activity.class == Message %>
+                    <li><%= activity.content %></li>
+                  <% elsif activity.class == Idea %>
+                    <li><%= activity.name %></li>
+                  <% end %>
+
+
+                <% end %>
+              </ul>
             </div>
           </div>
 
@@ -64,7 +82,11 @@
                         <td><%= image_tag "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80", class:"avatar-admin-img" %><%= project.user.email %></td>
                         <td><%= project.date %></td>
                         <td class="status-container">
+                        <% if Date.today >= project.date %>
                           <span class="badge custom-badge">Active</span>
+                          <% else %>
+                          <span class="badge custom-badge" style="color: red">inactive</span>
+                        <% end %>
                         </td>
                       </tr>
                       <% end %>
