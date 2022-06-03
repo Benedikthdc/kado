@@ -69,12 +69,7 @@
                   </table>
             <%= link_to "add idea", new_project_idea_path(@project) %>
             </div>
-            <div class="project-bottompart-right-cards ">
-
-              <h3 class="box-down-right-title">Group participants</h3>
-              <img src="https://github.com/mdo.png" width="50"       class="rounded-circle margin-right avatar-in-ideas">
-              <p class="box-down-right-h2">Add more participants </p>
-
+            <div class="dashboard-card project-bottompart-right-cards mt-3">
               <h3>Group participants</h3>
                 <% @project.users.each do |user| %>
                 <%= image_tag user.avatar, class:"avatar-group-index" %>
