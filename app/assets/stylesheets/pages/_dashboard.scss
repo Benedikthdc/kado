@@ -103,8 +103,9 @@ a {
 }
 
 .margin-right {
-  margin-right: -30px;
+  margin-right: 80px;
 }
+
 
 .dashboard-upperpart-card-activity{
   font-size: 22px;
@@ -117,4 +118,7 @@ a {
   flex-direction: column;
   justify-content: space-around;
   list-style: none;
+
+.current-month{
+  border: none
 }

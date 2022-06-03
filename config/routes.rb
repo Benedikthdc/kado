@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { invitations: 'users/invitations' }
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
+  get 'profile', to: 'pages#profile'
+  patch 'profile', to: 'pages#update'
 
   resources :projects do
     resources :messages, only: :create
@@ -13,3 +15,4 @@ Rails.application.routes.draw do
     resources :votes, only: :create
   end
 end
+
