@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+      <%= render 'shared/dashboardnav' %>
+      <div class="col py-3">
+        <div class="profile-background"></div>
+          <div class="profile-container">
+            <div class="profile-infos-upperpart d-flex align-items-center mb-4">
+              <img src="<%= @user.avatar %>" alt="" style="width: 180px; border-radius: 50%">
+              <div class="profile-user-info">
+                <h2>Profile</h2>
+                @<%= @user.name %>
+              </div>
+              </div>
+                <div class="profile-update-form">
+                  <%= simple_form_for @user, url: profile_path, method: :patch  do |f| %>
+                  <%= f.input :name %>
+                  <%= f.input :email %>
+                  <h3>Payment information</h3>
+                  <%= f.input :paypal %>
+                  <%= f.input :iban %>
+                  <%= f.submit class: "edit-profile-btn btn btn-primary" %>
+                <% end %>
+                </div>
+      </div>
+  </div>
+</div>

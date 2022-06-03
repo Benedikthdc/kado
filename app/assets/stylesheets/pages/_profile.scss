@@ -1,0 +1,34 @@
+.profile-container{
+  height: 80vh;
+}
+
+.mentor-header{
+  opacity: 0.4
+}
+
+.profile-background{
+  width: 75vw;
+  height: 25vh;
+  background-color: #C5DBFF;
+  position: relative;
+  margin: 2px auto;
+  border-radius: 14px
+}
+
+.profile-container{
+  position: absolute;
+  top:124px;
+  padding: 40px;
+  margin-left: 20px;
+  width: 80vw
+}
+
+.profile-user-info{
+  margin-left: 20px
+}
+
+.edit-profile-btn{
+  position: absolute;
+  top: 122px;
+  right: 45px;
+}
