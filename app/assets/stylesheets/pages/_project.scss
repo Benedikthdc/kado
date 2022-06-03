@@ -97,10 +97,14 @@
 
 .ideas-header {
   color: #000000;
-=======
+}
 .avatar-group-index{
 width: 50px;
 border-radius: 14px;
 margin-bottom: 10px
 
+}
+
+.simple-calendar .table > :not(caption) > * > * {
+  padding: 8px;
 }
