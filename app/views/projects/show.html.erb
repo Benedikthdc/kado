@@ -30,14 +30,16 @@
                 <% end %>
             </div>
             </div>
-            <div class="project-bottompart-left-cards">
-              <div class="dashboard-card project-bottompart-card-payment mt-3">
-              <img src="../../assets/images/payment.png" alt="">
-                  <h2>Payment infos</h2>
-                   <p>paypal:</p>
+            <div class="project-bottompart-left-cards dashboard-card mt-3">
+              <h2>Payment infos</h2>
+              <div class="d-flex justify-content-between">
+                <div>
+                  <p>paypal:</p>
                   <%= @project.user.paypal %>
                   <p>IBAN:</p>
                   <%= @project.user.iban%>
+                </div>
+                <%= image_tag "payment.png", class:"image-payment"%>
               </div>
             </div>
           </div>
