@@ -1,0 +1,100 @@
+        <div class="d-flex navbar-header">
+          <h1 class="project-name"><%= @project.name %></h1>
+          <h3 class="project-date"><%= @project.date %></h3>
+        </div>
+        <div class="project-card-container d-flex justify-content-around">
+          <div class="project-left-cards-container">
+            <div class="dashboard-card project-upperpart-card-chat overflow-hidden">
+            <h2>Chat</h2>
+              <div class="container chatroom overflow-scroll" style= "max-height: 415px" data-controller="chatroom-subscription" data-chatroom-subscription-project-id-value = <%= @project.id  %>>
+                <div class="messages" data-chatroom-subscription-target="messages">
+                  <% @project.messages.each do |message| %>
+                    <%= render "messages/message", message: message %>
+                  <% end %>
+                  </div>
+                  <%= simple_form_for [@project, @message],
+                  remote: true,
+                  html: {class: "d-flex"} do |f|
+                  %>
+                  <%= f.input :content,
+                    label: false,
+                    placeholder: "Message to #{@project.name}",
+                    wrapper_html: {class: "flex-grow-1"}
+                    #style: "margin-right: 10px;"
+                  %>
+                  <%= f.submit "Send", class: "btn btn-primary" %>
+                <% end %>
+            </div>
+            </div>
+            <div class="project-bottompart-left-cards">
+              <div class="dashboard-card project-bottompart-card-payment mt-3">
+              <img src="../../assets/images/payment.png" alt="">
+                  <h2>Payment infos</h2>
+                   <p>paypal:</p>
+                  <%= @project.user.paypal %>
+                  <p>IBAN:</p>
+                  <%= @project.user.iban%>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="project-right-card-container">
+            <div class="dashboard-card project-upperpart-card-ideas">
+              <div class="ideas-header d-flex justify-content-between">
+                <h2>Ideas</h2>
+                <%= link_to "view all", project_ideas_path(@project) %>
+              </div>
+
+                <table class="table">
+                  <thead>
+                    <tr class="table-light">
+                      <th scope="col">Idea</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Votes</th>
+                    </tr>
+                  </thead>
+                  <tbody style="border: none" class="ideas-table">
+                    <% @ideas.each do |idea| %>
+                      <tr>
+                        <th scope="row"><%= idea.title %></th>
+                        <td><%= idea.price %></td>
+                        <td><%= idea.total_votes %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+
+              <button type="button" class="btn btn-primary btn-idea" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add idea
+            </button>
+            </div>
+            <div class="dashboard-card project-bottompart-right-cards mt-3">
+              <h3>Group participants</h3>
+                <% @project.users.each do |user| %>
+                <%= image_tag user.avatar, class:"avatar-group-index" %>
+                <% end %>
+              <p>add users to group</p>
+
+                <%= simple_form_for(User.new, as: :user, url: invitation_path(:user), html: { method: :post }) do |f| %>
+                <%= f.error_notification %>
+
+                <%= hidden_field_tag :project_id, @project.id %>
+
+                <div class="d-flex email-bar-button">
+                  <% User.invite_key_fields.each do |field| -%>
+                    <%= f.input field, placeholder: "Email" %>
+                  <% end -%>
+
+                  <div class="form-actions">
+                    <%= f.button :submit, t("devise.invitations.new.submit_button"), class: "send-invite-btn btn btn-primary" %>
+                  </div>
+                </div>
+              <% end %>
+
+              <p class="copy-link fw-light">Copy link</p>
+              <a class="link-at-bottum" href="">s=chrome..69i57j0i512l9.1362j0j15&sourceid=chrome&</a>
+              </div>
+            </div>
+          </div>
+        </div>

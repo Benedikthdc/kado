@@ -119,3 +119,46 @@ a {
 .current-month{
   border: none
 }
+
+.activity-user-avatar{
+  height: 30px;
+  width: 30px;
+  border-radius: 14px;
+  margin-right: 20px
+}
+
+.activity-list-item{
+  font-size: 17px
+}
+
+.side-info-activity{
+  opacity: 0.7
+}
+
+.activity-created-at{
+  font-size: 15px;
+  margin-bottom: -3px;
+  opacity: 0.5
+}
+
+.activity-container{
+  margin-bottom: 20px
+}
+
+.dashboard-projects-bottompart{
+  height: 256px;
+  overflow: scroll;
+}
+
+.table-light{
+  background: green !important
+}
+
+.dashboard__table-body:hover {
+  background-color: rgb(246, 244, 244);
+  transform: scale(1.005)
+}
+
+.project-table-heading{
+  background-color: #FFCC00 !important
+}
