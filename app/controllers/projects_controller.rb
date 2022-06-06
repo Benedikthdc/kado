@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
     @message = Message.new
     @user_id = current_user.id
     @ideas = @project.ideas.sort_by(&:total_votes).reverse.first(3)
+    @countdown = (Date.today - @project.date).to_i * (-0.9)
   end
 
   def create

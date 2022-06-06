@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     @project = Project.new
     @projects = current_user.owned_projects + current_user.projects
     @activities = []
-    current_user.owned_projects.each do |project|
+    @projects.each do |project|
       @activities += project.ideas + project.messages + project.users
     end
 
