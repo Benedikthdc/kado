@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   def show
+    @idea = Idea.new
     @project = Project.find(params[:id])
     @message = Message.new
     @user_id = current_user.id

@@ -108,3 +108,63 @@ margin-bottom: 10px
 .simple-calendar .table > :not(caption) > * > * {
   padding: 8px;
 }
+
+.ideas-table{
+  display: block;
+  height: 135px;
+  overflow-y: scroll;
+  border:none
+}
+
+.table tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.close-button {
+  border-radius: 14px;
+}
+
+.modal-boxes{
+  border-radius: 14px;
+}
+
+.modal-title {
+  color: #8146FF;
+  font-size: 27px;
+}
+
+.navbar-header {
+  align-items: baseline;
+  margin-left: 40px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.project-name {
+  color: #000000;
+  padding-right: 20px;
+  font-size: x-large;
+  font-weight: 500;
+  border-right: 1px lightgray solid;
+}
+
+.project-date {
+  padding-left: 20px;
+  font-size: x-large;
+}
+
+.project-upperpart-card-chat {
+  width: 441px;
+  margin-left: 20px;
+  height: 474px;
+}
+
+#new_message {
+  align-items: baseline;
+}
+
+#new_message .btn {
+  margin-left: 20px;
+}
