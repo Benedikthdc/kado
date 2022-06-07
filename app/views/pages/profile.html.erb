@@ -5,19 +5,30 @@
         <div class="profile-background"></div>
           <div class="profile-container">
             <div class="profile-infos-upperpart d-flex align-items-center mb-4">
-              <img src="<%= @user.avatar %>" alt="" style="width: 180px; border-radius: 50%">
+              <% if @user.photo.attached? %>
+                <%= cl_image_tag @user.photo.key, style:"width: 180px; border-radius: 50%" %>
+              <% else %>
+                <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" %>
+              <% end %>
               <div class="profile-user-info">
-                <h2>Profile</h2>
-                @<%= @user.name %>
+                <h1>Profile</h1>
+                <h5>@<%= @user.name %></h5>
               </div>
               </div>
                 <div class="profile-update-form">
+                <div class="user-info-box">
                   <%= simple_form_for @user, url: profile_path, method: :patch  do |f| %>
-                  <%= f.input :name %>
-                  <%= f.input :email %>
+                    <%= f.input :name %>
+                    <%= f.input :photo, as: :file %>
+                  <div class="mt-5">
+                    <%= f.input :email, input_html: {class: "rounded"} %>
+                  </div>
+                  </div>
+                  <div class="user-payment-box">
                   <h3>Payment information</h3>
                   <%= f.input :paypal %>
                   <%= f.input :iban %>
+                  </div>
                   <%= f.submit class: "edit-profile-btn btn btn-primary" %>
                 <% end %>
                 </div>
