@@ -31,22 +31,21 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <%= simple_form_for [@project, @idea], html: {class: "modal-content"} do |f|%>
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Ideas</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-           <%= simple_form_for [@project, @idea] do |f|%>
-              <%= f.input :title, input_html: { class: "modal-boxes" } %>
-              <%= f.input :price, input_html: { class: "modal-boxes" } %>
-              <%= f.input :url, input_html: { class: "modal-boxes" } %>
+        <%= f.input :title, input_html: { class: "modal-boxes" } %>
+        <%= f.input :price, input_html: { class: "modal-boxes" } %>
+        <%= f.input :url, input_html: { class: "modal-boxes" } %>
+        <%= f.input :photo, as: :file, input_html: { class: "modal-boxes" } %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary close-button" data-bs-dismiss="modal">Close</button>
        <%= f.submit class: "btn btn-primary" %>
-        <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

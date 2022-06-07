@@ -12,15 +12,17 @@
 }
 
 .idea-img{
-  width: 200px
+  width: 206px;
+  margin-left: 18px;
+  margin-top: 4px;
+  height: 111px;
+  object-fit: contain;
 }
 
 .idea-card-avatar-img{
-  width: 40px;
+  width: 35px;
   border-radius: 50%;
-  position: absolute;
-  top: -186px;
-  right: 14px;
+  margin-top: -25px;
 }
 
 .bottom-idea-card{
@@ -29,6 +31,46 @@
 }
 
 .voting-btn{
-  width:45%;
-  height: 50px
+  width: 80px;
+  height: 38px;
+  padding: 6px;
+}
+
+.yes-no-buttons {
+  margin-top: 45px;
+  // padding: 6px;
+}
+
+.top-idea-card {
+  align-items: center;
+}
+
+.top-idea-card p {
+  margin: 0 0 0 10px;
+}
+
+.votes-count {
+  margin-top: 60px;
+    margin-left: 6px;
+    margin-bottom: 0;
+    font-weight: 500;
+    font-size: 13px;
+    background-color: lightgrey;
+    border-radius: 5px;
+    color: grey;
+    padding: 5px;
+}
+
+.price-text {
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.top-idea-card-title-title {
+  font-size: 12px;
+}
+
+.votes-at-bottum{
+  margin-left: 165px;
+  margin-top: -5px;
 }

@@ -3,6 +3,7 @@ class Idea < ApplicationRecord
   belongs_to :user
 
   has_many :votes, dependent: :destroy
+  has_one_attached :photo
 
   def positive_votes
     votes.where(value: 1).count
