@@ -1,3 +1,6 @@
+<%# <div class="title-at-top">
+ <h1>All Ideas</h1>
+</div> %>
 <div class="container-fluid">
     <div class="row flex-nowrap">
       <%= render 'shared/dashboardnav' %>
@@ -5,17 +8,29 @@
         <div class="idea-card-container d-flex">
           <% @ideas.each do |idea| %>
             <div class="dashboard-card idea-card">
-            <%= image_tag "https://img.freepik.com/free-vector/birthday-party-christmas-gift-box-isolated-vector-illustration-cartoon-square-giftbox-with-blue_98734-261.jpg",class:"idea-img" %>
+            <div class="d-flex top-idea-card justify-content-between">
+              <div class="top-idea-card-title">
+                <p class="top-idea-card-title-title"><%= idea.title %></p>
+                <p class="price-text">€<%= idea.price %></p>
+              </div>
+              <%= image_tag "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80", class:"idea-card-avatar-img" %>
+            </div>
+            <%#= image_tag "https://img.freepik.com/free-vector/birthday-party-christmas-gift-box-isolated-vector-illustration-cartoon-square-giftbox-with-blue_98734-261.jpg",class:"idea-img" %>
+              <div class="">
+                <%= image_tag "https://media.restocks.net/products/CW1590-100/nike-dunk-low-retro-white-black-gs-1-1000.png",class:"idea-img" %>
+              </div>
               <div class="bottom-idea-card">
-                  <%= image_tag "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80", class:"idea-card-avatar-img" %>
                   <% if current_user.votes.where(idea_id: idea.id).blank? %>
-                      <div class="votes-part d-flex justify-content-around">
+                      <div class="votes-part d-flex justify-content-around yes-no-buttons">
                         <%= link_to "yes", idea_votes_path(idea, value: :positive), method: :post, class: "voting-btn btn btn-primary" %>
                         <%= link_to "no", idea_votes_path(idea, value: :negative), method: :post, class: "voting-btn btn btn-primary" %>
                       </div>
                   <% else %>
-                    <p>you voted!</p>
-                    <p><%= idea.total_votes %></p>
+                    <%# <p>you voted!</p> %>
+                    <div class="d-flex votes-at-bottum">
+                      <div class="bg-success text-white votes-count"><%= idea.positive_votes %> <i class="fas fa-thumbs-up"></i></div>
+                      <div class="bg-danger text-white votes-count"><%= idea.negative_votes.abs %> <i class="fas fa-thumbs-down"></i></div>
+                    </div>
                   <% end %>
               </div>
 
