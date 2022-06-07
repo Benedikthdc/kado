@@ -28,6 +28,6 @@ class PagesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :avatar, :iban, :paypal)
+    params.require(:user).permit(:name, :email, :avatar, :iban, :paypal, :photo)
   end
 end
