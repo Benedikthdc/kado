@@ -15,9 +15,12 @@
               </div>
               <%= image_tag "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80", class:"idea-card-avatar-img" %>
             </div>
-            <%#= image_tag "https://img.freepik.com/free-vector/birthday-party-christmas-gift-box-isolated-vector-illustration-cartoon-square-giftbox-with-blue_98734-261.jpg",class:"idea-img" %>
               <div class="">
-                <%= image_tag "https://media.restocks.net/products/CW1590-100/nike-dunk-low-retro-white-black-gs-1-1000.png",class:"idea-img" %>
+                <% if idea.photo.attached? %>
+                  <%= image_tag idea.photo, class: "idea-img" %>
+                <% else %>
+                  <%= image_tag "https://img.freepik.com/free-vector/birthday-party-christmas-gift-box-isolated-vector-illustration-cartoon-square-giftbox-with-blue_98734-261.jpg",class:"idea-img" %>
+                <% end %>
               </div>
               <div class="bottom-idea-card">
                   <% if current_user.votes.where(idea_id: idea.id).blank? %>
