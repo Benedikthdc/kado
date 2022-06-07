@@ -15,23 +15,23 @@
                 <h5>@<%= @user.name %></h5>
               </div>
               </div>
+              <%= simple_form_for @user, url: profile_path, method: :patch  do |f| %>
                 <div class="profile-update-form">
-                <div class="user-info-box">
-                  <%= simple_form_for @user, url: profile_path, method: :patch  do |f| %>
+                  <div class="user-info-box">
                     <%= f.input :name %>
                     <%= f.input :photo, as: :file %>
                   <div class="mt-5">
                     <%= f.input :email, input_html: {class: "rounded"} %>
                   </div>
-                  </div>
-                  <div class="user-payment-box">
+                </div>
+                <div class="user-payment-box">
                   <h3>Payment information</h3>
                   <%= f.input :paypal %>
                   <%= f.input :iban %>
-                  </div>
-                  <%= f.submit class: "edit-profile-btn btn btn-primary" %>
-                <% end %>
                 </div>
+                <%= f.submit class: "edit-profile-btn btn btn-primary" %>
+              <% end %>
+            </div>
       </div>
   </div>
 </div>
