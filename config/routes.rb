@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   patch 'profile', to: 'pages#update'
 
   resources :projects do
+    get :pay, on: :member
     resources :messages, only: :create
     resources :ideas
     resources :user_projects
@@ -15,4 +16,3 @@ Rails.application.routes.draw do
     resources :votes, only: :create
   end
 end
-

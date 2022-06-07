@@ -11,11 +11,11 @@
       </div>
     <% elsif current_user == @project.user && @countdown <= 0%>
      <div class="col py-3">
-        <p>the coutndown has passed colleclt your money now</p>
+        <%= render "projectendadmin" %>
       </div>
     <% else %>
       <div class="col py-3">
-        <p>the countdwon has passed please pay the admin</p>
+        <%= render "projectenduser" %>
       </div>
     <% end %>
   </div>

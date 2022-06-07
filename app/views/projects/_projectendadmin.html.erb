@@ -1,3 +1,5 @@
+      <%= render "confirmationmodal"%>
+
         <div class="d-flex navbar-header">
           <h1 class="project-name"><%= @project.name %></h1>
           <h3 class="project-date"><%= @project.date %></h3>
@@ -28,48 +30,30 @@
             </div>
             <div class="project-bottompart-left-cards">
               <div class="dashboard-card project-bottompart-card-payment mt-3">
-              <img src="../../assets/images/payment.png" alt="">
-                  <h2>Payment infos</h2>
-                   <p>paypal:</p>
-                  <%= @project.user.paypal %>
-                  <p>IBAN:</p>
-                  <%= @project.user.iban%>
+              <h3>Payment</h3>
+                <h6>824€ of 1045€ have <br> already been paid</h6>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmationModal">
+                     check payment
+                  </button>
               </div>
             </div>
           </div>
 
 
           <div class="project-right-card-container">
-            <div class="dashboard-card project-upperpart-card-ideas">
-              <div class="ideas-header d-flex justify-content-between">
-                <h2>Ideas</h2>
-                <%= link_to "view all", project_ideas_path(@project) %>
-              </div>
-
-                <table class="table">
-                  <thead>
-                    <tr class="table-light">
-                      <th scope="col">Idea</th>
-                      <th scope="col">Price</th>
-                      <th scope="col">Votes</th>
-                    </tr>
-                  </thead>
-                  <tbody style="border: none" class="ideas-table">
-                    <% @ideas.each do |idea| %>
-                      <tr>
-                        <th scope="row"><%= idea.title %></th>
-                        <td><%= idea.price %></td>
-                        <td><%= idea.total_votes %></td>
-                      </tr>
-                    <% end %>
-                  </tbody>
-                </table>
-
-              <button type="button" class="btn btn-primary btn-idea" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Add idea
-            </button>
+            <div class="dashboard-card project-upperpart-card-ideas" style="height: 250px">
+              <div class="final-idea-body d-flex">
+               <%= image_tag "https://images.unsplash.com/photo-1618718315344-7cbffaa60b6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",class:"idea-img", style:"border-radius: 14px" %>
+                <div class="final-idea-info">
+                  <h1><%= @finalidea.title %></h1>
+                  <p><%= @finalidea.price %>$</p>
+                </div>
+               </div>
             </div>
-            <div class="dashboard-card project-bottompart-right-cards mt-3">
+
+
+
+            <div class="dashboard-card project-bottompart-right-cards mt-3" style="height:415px">
               <h3>Group participants</h3>
                 <% @project.users.each do |user| %>
                   <% if user.avatar %>
