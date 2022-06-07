@@ -26,21 +26,11 @@
                 <% end %>
             </div>
             </div>
-            <div class="project-bottompart-left-cards">
-              <div class="dashboard-card project-bottompart-card-payment mt-3">
-              <img src="../../assets/images/payment.png" alt="">
-                  <h2>Payment infos</h2>
-                   <p>paypal:</p>
-                  <%= @project.user.paypal %>
-                  <p>IBAN:</p>
-                  <%= @project.user.iban%>
-              </div>
-            </div>
           </div>
 
 
           <div class="project-right-card-container">
-            <div class="dashboard-card project-upperpart-card-ideas" style="height:515px">
+            <div class="dashboard-card project-upperpart-card-ideas" style="height:474px">
               <div class="ideas-header d-flex justify-content-between">
                 <h2>Ideas</h2>
                 <p style="margin-left: -250px; opacity: 0.4"><%= @countdown %> days left to vote</p>
@@ -67,5 +57,20 @@
             <%= link_to "add idea", new_project_idea_path(@project) %>
             </div>
             </div>
+          </div>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <p><%= @countdown %> days left to vote!</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <div class="dashboard-card group-users-index mt-3">
+          <h3>Group participants</h3>
+            <% @project.users.each do |user| %>
+               <% if user.avatar %>
+                    <%= image_tag user.avatar, class:"avatar-group-index" %>
+                  <% else %>
+                    <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" , class:"avatar-group-index" %>
+                  <% end %>
+              <% end %>
+
           </div>
         </div>

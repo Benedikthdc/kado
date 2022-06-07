@@ -1,7 +1,13 @@
 class ProjectsController < ApplicationController
   def show
     @idea = Idea.new
+    @maxvote = Vote.maximum('value')
+    @vote = Vote.find_by(value: @maxvote)
+    @finalidea = @vote.idea
     @project = Project.find(params[:id])
+    @user_projects = UserProject.where(project: @project)
+    @user_project = UserProject.where(project: @project, user: current_user).first
+    @payment = @project.users.empty? ? 0 : @finalidea.price / @project.users.count
     @message = Message.new
     @user_id = current_user.id
     @ideas = @project.ideas.sort_by(&:total_votes).reverse.first(3)
@@ -12,7 +18,14 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user_id = current_user.id
     @project.save
+    redirect_to project_path(@project)
+  end
 
+  def pay
+    @project = Project.find(params[:id])
+    @user_project = UserProject.where(project: @project, user: current_user).first
+    @user_project.paid = true
+    @user_project.save
     redirect_to project_path(@project)
   end
 

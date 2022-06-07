@@ -1,0 +1,25 @@
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <% @user_projects.each do |userproject| %>
+        <div class="userproject-index-item d-flex">
+            <p><%= userproject.user.name %></p>
+          <div>
+            <p>payment status:</p>
+            <p><%= userproject.paid %></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
