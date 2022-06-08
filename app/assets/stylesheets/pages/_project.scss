@@ -127,9 +127,6 @@ margin-bottom: 10px
   border-radius: 14px;
 }
 
-.modal-boxes{
-  border-radius: 14px;
-}
 
 .modal-title {
   color: #8146FF;
@@ -147,7 +144,7 @@ margin-bottom: 10px
   color: #000000;
   padding-right: 20px;
   font-size: x-large;
-  font-weight: 500;
+  font-weight: 600;
   border-right: 1px lightgray solid;
 }
 
@@ -162,12 +159,15 @@ margin-bottom: 10px
   height: 474px;
 }
 
+#message_content{
+  border-radius: 14px;
+}
 #new_message {
   align-items: baseline;
 }
 
 #new_message .btn{
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .image-payment {
@@ -181,7 +181,7 @@ margin-bottom: 10px
 }
 .group-users-index{
   height: 200px;
-  width: 78vw;
+  width: 31vw;
   margin-left:30px
 }
 
@@ -248,4 +248,8 @@ margin-bottom: 10px
   color: white;
   border-radius: 14px;
   margin-top: -12px;
+}
+
+.modal-content{
+  border-radius: 14px
 }

@@ -1,7 +1,7 @@
-
-        <div class="d-flex justify-content-between">
-          <h1 style="color: black">@<%= @project.name %></h1>
-          <h3><%= @project.date %></h3>
+        <%= render 'userindexmodal' %>
+        <div class="d-flex navbar-header">
+          <h1 class="project-name"><%= @project.name %></h1>
+          <h3 class="project-date"><%= @project.date %></h3>
         </div>
         <div class="project-card-container d-flex justify-content-around">
           <div class="project-left-cards-container">
@@ -64,14 +64,17 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           <div class="dashboard-card group-users-index mt-3">
-          <h3>Group participants</h3>
-            <% @project.users.each do |user| %>
-               <% if user.avatar %>
-                    <%= image_tag user.avatar, class:"avatar-group-index" %>
+          <h2>Group participants</h2>
+            <% @project.users.first(6).each do |user| %>
+               <% if user.photo.key.present? %>
+                    <%= cl_image_tag user.photo.key, class:"avatar-group-index" %>
                   <% else %>
                     <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" , class:"avatar-group-index" %>
                   <% end %>
               <% end %>
+              <button type="button" class="btn user-index-btn" data-bs-toggle="modal" data-bs-target="#userindexModal">
+                +<%= @project.users.size - 10 %>
+              </button>
 
           </div>
         </div>
