@@ -3,11 +3,11 @@ class ProjectsController < ApplicationController
     @idea = Idea.new
     @maxvote = Vote.maximum('value')
     @vote = Vote.find_by(value: @maxvote)
-    @finalidea = @vote.idea
+    @finalidea = @vote&.idea
     @project = Project.find(params[:id])
     @user_projects = UserProject.where(project: @project)
     @user_project = UserProject.where(project: @project, user: current_user).first
-    @payment = @project.users.empty? ? 0 : @finalidea.price / @project.users.count
+    @payment = @project.users.empty? ? 0 : @finalidea&.price || 0 / @project&.users&.count
     @message = Message.new
     @user_id = current_user.id
     @ideas = @project.ideas.sort_by(&:total_votes).reverse.first(3)
