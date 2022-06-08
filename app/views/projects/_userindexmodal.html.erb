@@ -1,0 +1,50 @@
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="userindexModal" tabindex="-1" aria-labelledby="UserIndexModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Group Participants</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr class="table-light">
+              <th scope="col" class="table-light__cell-radius-left fw-light project-table-heading">User</th>
+              <th scope="col" class="fw-light project-table-heading">Email</th>
+              <th scope="col" class="table-light__cell-radius-right fw-light project-table-heading">Idea</th>
+            </tr>
+          </thead>
+          <tbody style="border: none">
+            <% @project.users.each do |user|  %>
+              <tr class="dashboard__table-body fw-light">
+                 <td>
+                  <div class="d-flex">
+                  <% if user.photo.key.present? %>
+                    <%= cl_image_tag user.photo.key, class:"avatar-admin-img" %>
+                  <% else %>
+                     <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=", class:"avatar-admin-img" %>
+                  <% end %>
+                  <div><%= user.name %></div>
+                  </div>
+                  </td>
+                  <td><%= user.email %></td>
+                    <td class="user-idea">
+                      <% user_ideas = user.ideas.where(project: @project) %>
+                      <% if user_ideas.empty? %>
+                       <span class="badge custom-badge" style="color: red">No idea yet</span>
+                      <% else %>
+                        <%= user_ideas.map(&:title).join(", ") %>
+                      <% end %>
+                    </td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
