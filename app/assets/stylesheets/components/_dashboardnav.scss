@@ -45,3 +45,29 @@
   background: #8410ff;
   color: rgb(255, 255, 255);
 }
+
+.logout-btn-dashboard-nav {
+  padding: 14px 0 0 0px;
+  color:#8410ff
+}
+
+.whole-navbar {
+  border-radius: 10px !important;
+}
+
+.fa-user:before {
+  content: "\f007";
+  color: lightgray;
+}
+
+.fa-home:before {
+  content: "\f015";
+  color: lightgray;
+}
+
+.nav-pills .nav-link {
+  background: none;
+  border: 0;
+  border-radius: 2px;
+  margin-top: 7px;
+}
