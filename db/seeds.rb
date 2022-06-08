@@ -130,9 +130,18 @@ file = URI.open("https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?cr
   user.save!
 puts "- finished"
 
-project = Project.new(name: "Present for the birthday of Jeremy", date: "2022-06-20", user: User.first)
+project = Project.new(name: "Birthday Present Jeremy", date: "2022-06-20", user: User.first)
 project.save!
 project.users << User.all
+
+
+bali_file = URI.open("https://www.goway.com/media/cache/bc/50/bc50ea901f91dba4ca69ca7dbea58d44.jpg")
+project = Project.new(name: "Lisa's wedding", date: "2022-06-11", user: User.first)
+project.users << User.all
+project.ideas << Idea.new(title: "Trip to bali", user: User.first, price: 8300)
+project.ideas.first.photo.attach(io: bali_file, filename: "bali", content_type: 'image/jpg')
+project.save!
+
 
 puts "Creating fake users"
 30.times do

@@ -30,13 +30,15 @@
             </div>
             <div class="dashboard-card dashboard-upperpart-card-activity">
               <ul class="unordered-list">
-              <p>Activities</p>
+              <h2>Activities</h2>
                 <% @activities.last(3).each do |activity| %>
                   <% if activity.class == User %>
                     <%= @projects.first.user.invitation_sent_at %>
                   <div class="activity-container d-flex">
                   <% if @projects.first.user.photo.key.present? %>
                     <%= cl_image_tag @projects.first.user.photo.key, class:"activity-user-avatar" %>
+                  <% else %>
+                    <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=", class:"activity-user-avatar" %>
                   <% end %>
                     <li class="activity-list-item"><%= @projects.first.user.name %><span class="side-info-activity"> invited </span><%= activity.name %><span class="side-info-activity"> to his project</span></li>
                     <%# <%= link_to "view", project_path(@projects.first) %>
@@ -78,7 +80,7 @@
               <div class="dashboard-projects-container ">
                 <div class="dashboard-projects-upperpart d-flex justify-content-between">
                   <div class="my-projects-label">
-                    <p>My projects</p>
+                    <h2>My projects</h2>
                   </div>
                   <div class="project-links">
                     <%= link_to "join project" %>

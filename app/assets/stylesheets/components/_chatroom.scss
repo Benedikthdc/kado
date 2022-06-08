@@ -1,7 +1,7 @@
 .chatroom {
   background: white;
-  margin-top: 9px;
-  height: calc(100vh - 75px);
+  margin-top: 15px;
+  height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,7 +16,6 @@
   .messages {
     height: 100%;
     overflow: scroll;
-    padding: 1rem;
   }
 
   #new_message {
