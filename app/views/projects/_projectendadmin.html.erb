@@ -31,7 +31,7 @@
             <div class="project-bottompart-left-cards">
               <div class="dashboard-card project-bottompart-card-payment mt-3">
               <h3>Payment</h3>
-                <h6>824€ of 1045€ have <br> already been paid</h6>
+                 <h6><%= @payment_calc %> € of <%= @finalidea.price %>€<br>collected so far</h6>
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmationModal">
                      check payment
                   </button>
@@ -39,15 +39,25 @@
             </div>
           </div>
 
-
-          <div class="project-right-card-container">
-            <div class="dashboard-card project-upperpart-card-ideas" style="height: 250px">
+     <div class="project-right-card-container">
+            <div class="dashboard-card  project-upperpart-card-ideas" style="height: 250px">
               <div class="final-idea-body d-flex">
-               <%= image_tag "https://images.unsplash.com/photo-1618718315344-7cbffaa60b6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",class:"idea-img", style:"border-radius: 14px" %>
+                <% if @finalidea.photo.attached? %>
+                  <%= image_tag @finalidea.photo, class: "final-idea-img" %>
+                <% else %>
+                  <%= image_tag "https://img.freepik.com/free-vector/birthday-party-christmas-gift-box-isolated-vector-illustration-cartoon-square-giftbox-with-blue_98734-261.jpg",class:"final-idea-img" %>
+                <% end %>
                 <div class="final-idea-info">
                   <h1><%= @finalidea.title %></h1>
-                  <p><%= @finalidea.price %>$</p>
+                  <div class="final-idea-price">
+                    <p><%= @finalidea.price %>€</p>
+                  </div>
                 </div>
+                <% if @finalidea.user.present? %>
+                  <%= image_tag @finalidea.user.avatar, class:"final-idea-user-avatar"%>
+                <% else %>
+                  <p>pimmekl</p>
+                <% end %>
                </div>
             </div>
 
@@ -86,7 +96,11 @@
             </div>
           </div>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-              <p><%= @countdown %> days left to vote!</p>
+            <% if Date.today > @project.date %>
+              <p>this project has ended 🥲</p>
+            <% else %>
+              <p><%= @time_until_date %> days to get your money</p>
+            <% end %>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
         </div>

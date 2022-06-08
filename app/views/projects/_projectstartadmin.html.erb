@@ -8,9 +8,13 @@
             <h2>Chat</h2>
               <div class="container chatroom overflow-scroll" style= "max-height: 415px" data-controller="chatroom-subscription" data-chatroom-subscription-project-id-value = <%= @project.id  %>>
                 <div class="messages" data-chatroom-subscription-target="messages">
+                <% if @project.messages.empty? %>
+                  <p>no messages here yet😕; write your first below</p>
+                <% else %>
                   <% @project.messages.each do |message| %>
                     <%= render "messages/message", message: message %>
                   <% end %>
+                <% end %>
                   </div>
                   <%= simple_form_for [@project, @message],
                   remote: true,
@@ -27,14 +31,6 @@
             </div>
             </div>
             <div class="project-bottompart-left-cards">
-              <div class="dashboard-card project-bottompart-card-payment mt-3">
-              <img src="../../assets/images/payment.png" alt="">
-                  <h2>Payment infos</h2>
-                   <p>paypal:</p>
-                  <%= @project.user.paypal %>
-                  <p>IBAN:</p>
-                  <%= @project.user.iban%>
-              </div>
             </div>
           </div>
 
@@ -55,6 +51,9 @@
                     </tr>
                   </thead>
                   <tbody style="border: none" class="ideas-table">
+                  <% if @ideas.empty? %>
+                    <p style="opacity: 0.4">no ideas here yet😕; suggest the first!!</p>
+                  <% else %>
                     <% @ideas.each do |idea| %>
                       <tr>
                         <th scope="row"><%= idea.title %></th>
@@ -62,6 +61,7 @@
                         <td><%= idea.total_votes %></td>
                       </tr>
                     <% end %>
+                  <% end %>
                   </tbody>
                 </table>
 

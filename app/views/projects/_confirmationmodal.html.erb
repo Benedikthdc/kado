@@ -3,22 +3,42 @@
 
 <!-- Modal -->
 <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog  modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Check the project payments here</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <% @user_projects.each do |userproject| %>
-        <div class="userproject-index-item d-flex">
-            <p><%= userproject.user.name %></p>
-          <div>
-            <p>payment status:</p>
-            <p><%= userproject.paid %></p>
-          </div>
-        </div>
-        <% end %>
+        <table class="table">
+          <thead>
+            <tr class="table-light">
+              <th scope="col" class="table-light__cell-radius-left fw-light project-table-heading">User</th>
+              <th scope="col" class="fw-light project-table-heading">Email</th>
+              <th scope="col" class="table-light__cell-radius-right fw-light project-table-heading">Status</th>
+            </tr>
+          </thead>
+          <tbody style="border: none">
+            <% @user_projects.each do |projectuser|  %>
+              <tr class="dashboard__table-body fw-light">
+                 <td>
+                  <div class="d-flex">
+                    <%= image_tag "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80", class:"avatar-admin-img" %>
+                  <div><%= projectuser.user.name %></div>
+                  </div>
+                  </td>
+                  <td><%= projectuser.user.email %></td>
+                    <td class="status-container">
+                      <% if projectuser.paid == true %>
+                        <span class="badge custom-badge">Paid</span>
+                      <% else %>
+                        <span class="badge custom-badge" style="color: red">Not paid</span>
+                      <% end %>
+                    </td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
       </div>
     </div>
   </div>
