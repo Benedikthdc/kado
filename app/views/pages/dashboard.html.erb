@@ -8,8 +8,11 @@
         <div class="dashboard__title-logo">
           <h1 class="title-dashboard">Dashboard</h1>
           <div class="dropdown pb-4">
-          <% if current_user.avatar.present? %>
-              <%=  image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style:"width:53px; margin-right: 66px"%>
+          <% if current_user.photo.key.present? %>
+            <div class="d-flex align-items-center">
+              <p style="opacity: 0.6;"><%= current_user.email %></p>
+              <%=  cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style:"width:70px; margin-right: 66px"%>
+            </div>
             <% else %>
                <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
@@ -32,13 +35,19 @@
                   <% if activity.class == User %>
                     <%= @projects.first.user.invitation_sent_at %>
                   <div class="activity-container d-flex">
+                  <% if @projects.first.user.photo.key.present? %>
                     <%= cl_image_tag @projects.first.user.photo.key, class:"activity-user-avatar" %>
+                  <% end %>
                     <li class="activity-list-item"><%= @projects.first.user.name %><span class="side-info-activity"> invited </span><%= activity.name %><span class="side-info-activity"> to his project</span></li>
-                    <%# <%= link_to "view", project_path(@projects.first) %>  
+                    <%# <%= link_to "view", project_path(@projects.first) %>
                   </div>
                   <% elsif activity.class == Message %>
                   <div class="activity-container d-flex">
+                  <% if activity.user.photo.key.present? %>
                     <%= cl_image_tag activity.user.photo.key, class:"activity-user-avatar" %>
+                  <% else %>
+                   <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=", class:"activity-user-avatar" %>
+                  <% end %>
                     <div class="activity-container-left">
                       <p class="activity-created-at"><%= activity.created_at.strftime("%a, %l:%M %p") %></p>
                       <li class="activity-list-item"><%= activity.user.name %><span class="side-info-activity"> sent a message in </span><%= activity.project.name %></li>
@@ -47,7 +56,11 @@
                   </div>
                   <% elsif activity.class == Idea %>
                   <div class="activity-container d-flex">
-                    <%= cl_image_tag activity.user.photo.key, class:"activity-user-avatar" %>
+                    <% if activity.user.photo.key.present? %>
+                      <%= cl_image_tag activity.user.photo.key, class:"activity-user-avatar" %>
+                    <% else %>
+                      <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=", class:"activity-user-avatar" %>
+                    <% end %>
                     <div class="activity-container-left">
                       <p class="activity-created-at"><%= activity.created_at.strftime("%a, %l:%M %p") %></p>
                       <li class="activity-list-item"><%= activity.user.name%><span class="side-info-activity"> suggested </span><%= activity.title %> in <%= activity.project.name %></li>
@@ -91,7 +104,11 @@
                           <th class="group" scope="row"><%= link_to project.name, project_path(project) %></th>
                           <td>
                             <div class="d-flex">
-                              <%= image_tag "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80", class:"avatar-admin-img" %>
+                             <% if project.user.photo.key.present? %>
+                                <%= cl_image_tag project.user.photo.key, class:"admin-avatar-img", style:"width:70px; margin-right: -10px"%>
+                            <% else %>
+                                <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=", class:"avatar-admin-img" %>
+                            <% end %>
                               <div><%= project.user.email %></div>
                             </div>
                           </td>
