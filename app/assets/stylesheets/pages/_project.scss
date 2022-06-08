@@ -7,6 +7,7 @@
 .project-upperpart-card-ideas{
   width: 662px;
   height: 350px;
+  position:relative
 }
 
 
@@ -177,7 +178,7 @@ margin-bottom: 10px
 
 .final-idea-info{
   margin-left: 75px;
-  margin-top: 50px
+  margin-top: 50px;
 }
 .group-users-index{
   height: 200px;
@@ -197,16 +198,47 @@ margin-bottom: 10px
   padding: 5px;
   background-color: rgb(58, 57, 57);
   border-radius: 14px;
-  margin-top:10px;
-  margin-bottom: 25px
+  margin-left:15px
 }
 
-.payment-btn{
 
-  top: 0;
-  right: 5px
+
+.payment-btn-container{
+  background-color: #8146FF;
+  padding: 20px;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 14px
 }
 
-.project-payment-info-container{
-  position: relative
+.payment-btn-container-disabled{
+  background-color: white;
+  border: 2px solid  #8146FF;
+  color:  #8146FF;
+  padding: 20px;
+  text-align: center;
+  border-radius: 14px;
+  margin-top: 10px
+}
+
+.final-idea-img{
+  height: 200px;
+  border-radius: 14px
+}
+
+.final-idea-user-avatar{
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.final-idea-price{
+  padding: 2px 40px;
+  text-align: center;
+  background-color:rgb(58, 57, 57);
+  color: white;
+  margin-top: 10px;
+  border-radius: 14px
 }

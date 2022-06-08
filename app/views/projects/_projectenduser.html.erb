@@ -32,22 +32,37 @@
           <div class="project-right-card-container">
             <div class="dashboard-card  project-upperpart-card-ideas" style="height: 250px">
               <div class="final-idea-body d-flex">
-               <%= image_tag "https://images.unsplash.com/photo-1618718315344-7cbffaa60b6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",class:"idea-img", style:"border-radius: 14px" %>
+                <% if @finalidea.photo.attached? %>
+                  <%= image_tag @finalidea.photo, class: "final-idea-img" %>
+                <% else %>
+                  <%= image_tag "https://img.freepik.com/free-vector/birthday-party-christmas-gift-box-isolated-vector-illustration-cartoon-square-giftbox-with-blue_98734-261.jpg",class:"final-idea-img" %>
+                <% end %>
                 <div class="final-idea-info">
                   <h1><%= @finalidea.title %></h1>
-                  <p><%= @finalidea.price %>$</p>
+                  <div class="final-idea-price">
+                    <p><%= @finalidea.price %>€</p>
+                  </div>
                 </div>
+                <% if @finalidea.user.present? %>
+                  <%= image_tag @finalidea.user.avatar, class:"final-idea-user-avatar"%>
+                <% else %>
+                  <p>pimmekl</p>
+                <% end %>
                </div>
             </div>
 
             <div class="project-bottompart-left-cards">
               <div class="dashboard-card d-flex justify-content-between project-bottompart-card-payment mt-3" style="margin-left: -20px; width: 662px; height: 350px">
                 <div class="project-payment-info-container">
-                  <div class="payment-header d-flex justify-content-between">
+                  <div class="payment-header">
                     <h2>Payment</h2>
                   </div>
-                  <div>
-                    <p>You owe <%= @payment %>€ to <%= @project.user.name %></p>
+                  <% if @user_project.paid %>
+                    <p style="color: green">You already paid</p>
+                  <% else %>
+                    <p style="color: red">You owe <%= @payment %>€ to <%= @project.user.name %></p>
+                  <% end %>
+                    <div class="payment-cards-container d-flex justify-content-between">
                     <div class="paypal-card">
                       <div class="paypal-card-container d-flex">
                         <%= image_tag "https://img.icons8.com/fluency/344/paypal.png",width:"40px", height: "40px"%>
@@ -66,19 +81,31 @@
                         </div>
                       </div>
                     </div>
+                    </div>
+                <% if @user_project.paid == false %>
+                 <div class="payment-btn-container">
+                    <h3 style="font-size: 1.25rem; color: white"><%= link_to "pay", pay_project_path(@project), class:"payment-btn"%></h3>
+                </div>
+                <% else %>
+                  <div class="payment-btn-container-disabled">
+                   <p style="color:  #8146FF">paid</p>
+                </div>
+                <% end %>
                   </div>
                 </div>
-                <div class="project-payment-right-side align-items-center" >
-                  <h6 style="margin-top: 130px">824€ of 1045€ have <br> already been paid</h6>
-                </div>
-                <% if @user_project.paid == false %>
-                  <%= link_to "I paid", pay_project_path(@project), class:"payment-btn"%>
-                <% else %>
-                  <p>you have paid</p>
-                <% end %>
               </div>
             </div>
+
+
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <p><%= @countdown %> days left to vote!</p>
+        <% if Date.today > @project.date %>
+          <p>this project has ended 🥲</p>
+          <% elsif Date.today == @project.date && @user_project.paid == false%>
+          <p>pay the admin today</p>
+        <% elsif Date.today < @project.date && @user_project.paid == false %>
+          <p><%= @time_until_date %> days left to pay admin</p>
+        <% else %>
+        <p>you look beautiful today😍</p>
+        <% end %>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>

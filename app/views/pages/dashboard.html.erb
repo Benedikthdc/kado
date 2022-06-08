@@ -32,13 +32,13 @@
                   <% if activity.class == User %>
                     <%= @projects.first.user.invitation_sent_at %>
                   <div class="activity-container d-flex">
-                    <img src="<%= @projects.first.user.avatar %>" alt="" width="30px" class="activity-user-avatar">
+                    <%= cl_image_tag @projects.first.user.photo.key, class:"activity-user-avatar" %>
                     <li class="activity-list-item"><%= @projects.first.user.name %><span class="side-info-activity"> invited </span><%= activity.name %><span class="side-info-activity"> to his project</span></li>
-                    <%= link_to "view", project_path(@projects.first) %>
+                    <%# <%= link_to "view", project_path(@projects.first) %>  
                   </div>
                   <% elsif activity.class == Message %>
                   <div class="activity-container d-flex">
-                    <img src="<%= activity.user.avatar%>" alt="" class="activity-user-avatar">
+                    <%= cl_image_tag activity.user.photo.key, class:"activity-user-avatar" %>
                     <div class="activity-container-left">
                       <p class="activity-created-at"><%= activity.created_at.strftime("%a, %l:%M %p") %></p>
                       <li class="activity-list-item"><%= activity.user.name %><span class="side-info-activity"> sent a message in </span><%= activity.project.name %></li>
@@ -47,7 +47,7 @@
                   </div>
                   <% elsif activity.class == Idea %>
                   <div class="activity-container d-flex">
-                    <img src="<%= activity.user.avatar%>" alt="" class="activity-user-avatar">
+                    <%= cl_image_tag activity.user.photo.key, class:"activity-user-avatar" %>
                     <div class="activity-container-left">
                       <p class="activity-created-at"><%= activity.created_at.strftime("%a, %l:%M %p") %></p>
                       <li class="activity-list-item"><%= activity.user.name%><span class="side-info-activity"> suggested </span><%= activity.title %> in <%= activity.project.name %></li>

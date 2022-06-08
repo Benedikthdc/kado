@@ -5,13 +5,15 @@ class ProjectsController < ApplicationController
     @vote = Vote.find_by(value: @maxvote)
     @finalidea = @vote&.idea
     @project = Project.find(params[:id])
+    @time_until_date = (Date.today - @project.date).to_i * (-1)
     @user_projects = UserProject.where(project: @project)
     @user_project = UserProject.where(project: @project, user: current_user).first
+    @payment_calc = (UserProject.where(project: @project, paid: true).count * @payment).round(2)
     @payment = @project.users.empty? ? 0 : @finalidea&.price || 0 / @project&.users&.count
     @message = Message.new
     @user_id = current_user.id
     @ideas = @project.ideas.sort_by(&:total_votes).reverse.first(3)
-    @countdown = (Date.today - @project.date).to_i * (-0.9)
+    @countdown = ((Date.today - @project.date).to_i * (-1)) - 5
   end
 
   def create
