@@ -165,7 +165,7 @@ project.users.last(20).each do |user|
 end
 
 baby_file = URI.open("https://ae01.alicdn.com/kf/Hcbb4690678c54bef9c78c1daae7075a51/We-Love-Hasbulla-funda-de-almohada-Mini-Khabib-funda-de-almohada-de-lino-y-algod-n.jpg")
-baby = Project.new(name: "Gift for Joanas baby", date: "2022-06-12", user: admin)
+baby = Project.new(name: "Gift for Gonzo", date: "2022-06-12", user: admin)
 baby.users << User.all
 baby.ideas << Idea.new(title: "Hasbulla pillow", user: User.last, price: 42)
 baby.ideas.first.photo.attach(io: baby_file, filename: "hasbulla", content_type: "image/jpg")
