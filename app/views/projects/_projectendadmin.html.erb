@@ -71,7 +71,7 @@
             <div class="dashboard-card project-bottompart-right-cards mt-3" style="height:415px">
               <h3>Group participants</h3>
               <div>
-                <% @project.users.first(10).each do |user| %>
+                <% @project.users.last(10).each do |user| %>
                   <% if user.photo.attached? %>
                     <%= image_tag user.photo, class:"avatar-group-index" %>
                   <% else %>

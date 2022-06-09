@@ -10,7 +10,7 @@
           <div class="dropdown pb-4">
           <% if current_user.photo.key.present? %>
             <div class="d-flex align-items-center">
-              <p style="opacity: 0.6;"><%= current_user.email %></p>
+              <p style="opacity: 0.6; margin-right: 15px"><%= current_user.email %></p>
               <%=  cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style:"width:70px; margin-right: 66px"%>
             </div>
             <% else %>
@@ -36,7 +36,7 @@
                   <% @projects_to_finish.each do |project| %>
                   <div class="activity-container d-flex">
                       <%= image_tag "https://img.icons8.com/color/344/checked-2--v1.png", class:"activity-user-avatar" %>
-                      <li class="activity-list-item"><span class="side-info-activity">You stil have to vote for </span>Lisa's wedding gift</li>
+                      <li class="activity-list-item"><span class="side-info-activity">You stil have to pay for </span>Lisa's wedding gift</li>
                     <% end %>
                   </div>
                 <% end %>
@@ -116,7 +116,7 @@
                           <td>
                             <div class="d-flex">
                              <% if project.user.photo.key.present? %>
-                                <%= cl_image_tag project.user.photo.key, class:"activity-user-avatar", style:"margin-right: 1px"%>
+                                <%= cl_image_tag project.user.photo.key, class:"activity-user-avatar", style:"margin-right: 7px"%>
                             <% else %>
                                 <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=", class:"avatar-admin-img" %>
                             <% end %>
