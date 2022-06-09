@@ -57,10 +57,10 @@
                     <p><%= @finalidea.price %>€</p>
                   </div>
                 </div>
-                <% if @finalidea.user.present? %>
-                  <%= image_tag @finalidea.user.avatar, class:"final-idea-user-avatar"%>
+                <% if @finalidea.user.present? && @finalidea.user.photo.attached? %>
+                  <%= image_tag @finalidea.user.photo, class:"final-idea-user-avatar" %>
                 <% else %>
-                  <p>pimmekl</p>
+                  <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" , style:"height: 36px; width: 36px" %>
                 <% end %>
                </div>
             </div>
@@ -82,7 +82,8 @@
                     +<%= @project.users.size - 10 %>
                   </button>
               </div>
-              <p>add users to group</p>
+              <div style="margin-top:40px">
+                <p>add users to group</p>
 
                 <%= simple_form_for(User.new, as: :user, url: invitation_path(:user), html: { method: :post }) do |f| %>
                 <%= f.error_notification %>
@@ -99,6 +100,7 @@
                   </div>
                 </div>
               <% end %>
+              </div>
               </div>
             </div>
           </div>

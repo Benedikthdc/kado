@@ -6,11 +6,13 @@ class PagesController < ApplicationController
 
   def dashboard
     @project = Project.new
-    @projects = current_user.owned_projects + current_user.projects
+    @projects = current_user.projects
     @activities = []
     @projects.each do |project|
       @activities += project.ideas + project.messages + project.users
     end
+
+    @projects_to_finish = [current_user.projects.first] #current_user.projects.where(date: (Date.today - 3.days)..)
 
     @activities = @activities.sort_by(&:created_at)
   end

@@ -1,14 +1,12 @@
 class ProjectsController < ApplicationController
   def show
     @idea = Idea.new
-    @maxvote = Vote.maximum('value')
-    @vote = Vote.find_by(value: @maxvote)
-    @finalidea = @vote&.idea
     @project = Project.find(params[:id])
+    @finalidea = @project.ideas.sort_by(&:total_votes).first
     @time_until_date = (Date.today - @project.date).to_i * (-1)
     @user_projects = UserProject.where(project: @project)
     @user_project = UserProject.where(project: @project, user: current_user).first
-    @payment = @project.users.empty? ? 0 : @finalidea&.price || 0 / @project&.users&.count
+    @payment = @project.users.empty? ? 0 : (@finalidea&.price || 0) / @project&.users&.size
     @payment_calc = (UserProject.where(project: @project, paid: true).count * @payment).round(2)
     @message = Message.new
     @user_id = current_user.id
