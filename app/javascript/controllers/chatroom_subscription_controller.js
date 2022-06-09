@@ -3,7 +3,7 @@ import consumer from "../channels/consumer"
 
 export default class extends Controller {
   static values = { projectId: Number }
-  static targets = ["messages"]
+  static targets = ["messages", "input"]
 
   connect() {
       this.channel = consumer.subscriptions.create(
@@ -17,6 +17,7 @@ export default class extends Controller {
     console.log("message received");
     this.messagesTarget.insertAdjacentHTML("beforeend", data)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+    this.inputTarget.value =  ""
   }
 
 }

@@ -21,7 +21,8 @@
                   <%= f.input :content,
                     label: false,
                     placeholder: "Message to #{@project.name}",
-                    wrapper_html: {class: "flex-grow-1"}
+                    wrapper_html: {class: "flex-grow-1"},
+                    input_html: { data: {chatroom_subscription_target: "input"}}
                     #style: "margin-right: 10px;"
                   %>
                   <%= f.submit "Send", class: "btn btn-primary" %>
