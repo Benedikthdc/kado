@@ -40,19 +40,19 @@
                 <div class="final-idea-info">
                   <h1><%= @finalidea.title %></h1>
                   <div class="final-idea-price">
-                    <p><%= @finalidea.price %>€</p>
+                    <button><%= @finalidea.price %>€</button>
                   </div>
                 </div>
-                <% if @finalidea.user.present? %>
-                  <%= image_tag @finalidea.user.avatar, class:"final-idea-user-avatar"%>
+                <% if @finalidea.user.present? && @finalidea.user.photo.attached?%>
+                  <%= image_tag @finalidea.user.photo, class:"final-idea-user-avatar"%>
                 <% else %>
-                  <p>pimmekl</p>
+                  <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" , style:"height: 36px; width: 36px" %>
                 <% end %>
                </div>
             </div>
 
             <div class="project-bottompart-left-cards">
-              <div class="dashboard-card d-flex justify-content-between project-bottompart-card-payment mt-3" style="margin-left: -20px; width: 662px; height: 350px">
+              <div class="dashboard-card d-flex justify-content-between project-bottompart-card-payment mt-3" style="margin-left: -20px; width: 662px; height: 300px">
                 <div class="project-payment-info-container">
                   <div class="payment-header">
                     <h2>Payment</h2>

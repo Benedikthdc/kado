@@ -186,14 +186,14 @@ margin-bottom: 10px
 }
 
 .paypal-card-container{
-  width: 250px;
+  width: 305px;
   padding: 5px;
   background-color: rgb(58, 57, 57);
   border-radius: 14px
 }
 
 .bank-card-container{
-  width: 250px;
+  width: 305px;
   padding: 5px;
   background-color: rgb(58, 57, 57);
   border-radius: 14px;
@@ -233,12 +233,10 @@ margin-bottom: 10px
   right: 12px;
 }
 
-.final-idea-price{
-  padding: 2px 40px;
-  text-align: center;
-  background-color:rgb(58, 57, 57);
+.final-idea-price button{
+  padding: 10px 15px;
+  background-color:rgb(101, 101, 255);
   color: white;
-  margin-top: 10px;
   border-radius: 14px
 }
 
@@ -252,4 +250,8 @@ margin-bottom: 10px
 
 .modal-content{
   border-radius: 14px
+}
+
+.project-bottompart-card-payment{
+  height: 192px
 }

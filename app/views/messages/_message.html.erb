@@ -1,7 +1,7 @@
 <div class="d-flex">
 <div>
   <% if message.user.photo.key.present? %>
-    <%= cl_image_tag message.user.photo.key, class:"admin-avatar-img", style:"width:70px; margin-right: -10px"%>
+    <%= cl_image_tag message.user.photo.key, class:"admin-avatar-img", style:"width:36px; height: 36px; margin-right: 20px; border-radius: 14px"%>
   <% else %>
     <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=", class:"avatar-admin-img" %>
   <% end %>

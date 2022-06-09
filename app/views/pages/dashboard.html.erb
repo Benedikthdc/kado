@@ -31,7 +31,16 @@
             <div class="dashboard-card dashboard-upperpart-card-activity">
               <ul class="unordered-list">
               <h2>Activities</h2>
-                <% @activities.last(3).each do |activity| %>
+                <% unless @projects_to_finish.empty? %>
+
+                  <% @projects_to_finish.each do |project| %>
+                  <div class="activity-container d-flex">
+                      <%= image_tag "https://img.icons8.com/color/344/checked-2--v1.png", class:"activity-user-avatar" %>
+                      <li class="activity-list-item"><span class="side-info-activity">You stil have to vote for </span>Lisa's wedding gift</li>
+                    <% end %>
+                  </div>
+                <% end %>
+                <% @activities.last(2).each do |activity| %>
                   <% if activity.class == User %>
                     <%= @projects.first.user.invitation_sent_at %>
                   <div class="activity-container d-flex">
@@ -107,7 +116,7 @@
                           <td>
                             <div class="d-flex">
                              <% if project.user.photo.key.present? %>
-                                <%= cl_image_tag project.user.photo.key, class:"admin-avatar-img", style:"width:70px; margin-right: -10px"%>
+                                <%= cl_image_tag project.user.photo.key, class:"activity-user-avatar", style:"margin-right: 1px"%>
                             <% else %>
                                 <%= image_tag "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=", class:"avatar-admin-img" %>
                             <% end %>
